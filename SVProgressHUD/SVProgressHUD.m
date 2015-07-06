@@ -306,7 +306,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
             break;
         }
         case SVProgressHUDMaskTypeYellow: {
-            [[UIColor colorWithRed:252.0/255.0 green:1.0 blue:0.0 alpha:0.96] set];
+            [[UIColor colorWithRed:252.0/255.0 green:1.0 blue:0.0 alpha:0.6] set];
             CGContextFillRect(context, self.bounds);
             break;
         }
