@@ -308,6 +308,15 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
         case SVProgressHUDMaskTypeYellow: {
             [[UIColor colorWithRed:252.0/255.0 green:1.0 blue:0.0 alpha:0.6] set];
             CGContextFillRect(context, self.bounds);
+            
+            CGFloat w = self.bounds.size.width;
+            CGFloat h = self.bounds.size.height;
+            
+            [[UIColor whiteColor] set];
+            CGContextFillRect(context, CGRectMake(0, 0, w, 10));
+            CGContextFillRect(context, CGRectMake(0, 0, 10, h));
+            CGContextFillRect(context, CGRectMake(w - 10, 0, 10, h));
+            CGContextFillRect(context, CGRectMake(0, h - 10, w, 10));
             break;
         }
         case SVProgressHUDMaskTypeGradient: {
