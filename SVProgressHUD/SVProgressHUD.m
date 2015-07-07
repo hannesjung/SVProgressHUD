@@ -27,6 +27,7 @@ static UIColor *SVProgressHUDBackgroundColor;
 static UIColor *SVProgressHUDForegroundColor;
 static CGFloat SVProgressHUDCornerRadius;
 static CGFloat SVProgressHUDRingThickness;
+static BOOL SVProgressHUDStatusUppercase = false;
 static UIFont *SVProgressHUDFont;
 static UIImage *SVProgressHUDInfoImage;
 static UIImage *SVProgressHUDSuccessImage;
@@ -104,6 +105,10 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 + (void)setCornerRadius:(CGFloat)cornerRadius {
     [self sharedView].hudView.layer.cornerRadius = cornerRadius;
     SVProgressHUDCornerRadius = cornerRadius;
+}
+
++ (void)setStatusUppercase:(BOOL)uppercase {
+    SVProgressHUDStatusUppercase = uppercase;
 }
 
 + (void)setFont:(UIFont *)font {
@@ -439,7 +444,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
 }
 
 - (void)setStatus:(NSString *)string {
-	self.stringLabel.text = string;
+    self.stringLabel.text = SVProgressHUDStatusUppercase ? [string uppercaseStringWithLocale:[NSLocale currentLocale]] : string;
     [self updatePosition];
     
 }
@@ -640,7 +645,8 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
     self.maskType = hudMaskType;
     self.progress = progress;
     
-    self.stringLabel.text = string;
+    NSLog(@"%d status 1", SVProgressHUDStatusUppercase);
+    self.stringLabel.text = SVProgressHUDStatusUppercase ? [string uppercaseStringWithLocale:[NSLocale currentLocale]] : string;
     [self updatePosition];
     
     if(progress >= 0) {
@@ -739,7 +745,8 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
     self.imageView.image = image;
     self.imageView.hidden = NO;
     
-    self.stringLabel.text = string;
+    NSLog(@"%d status 2", SVProgressHUDStatusUppercase);
+    self.stringLabel.text = SVProgressHUDStatusUppercase ? [string uppercaseStringWithLocale:[NSLocale currentLocale]] : string;
     [self updatePosition];
     [self.indefiniteAnimatedView removeFromSuperview];
     
