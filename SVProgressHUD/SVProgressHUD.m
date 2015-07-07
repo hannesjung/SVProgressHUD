@@ -645,7 +645,6 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
     self.maskType = hudMaskType;
     self.progress = progress;
     
-    NSLog(@"%d status 1", SVProgressHUDStatusUppercase);
     self.stringLabel.text = SVProgressHUDStatusUppercase ? [string uppercaseStringWithLocale:[NSLocale currentLocale]] : string;
     [self updatePosition];
     
@@ -745,7 +744,6 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
     self.imageView.image = image;
     self.imageView.hidden = NO;
     
-    NSLog(@"%d status 2", SVProgressHUDStatusUppercase);
     self.stringLabel.text = SVProgressHUDStatusUppercase ? [string uppercaseStringWithLocale:[NSLocale currentLocale]] : string;
     [self updatePosition];
     [self.indefiniteAnimatedView removeFromSuperview];
