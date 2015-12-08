@@ -23,7 +23,9 @@ typedef NS_ENUM(NSUInteger, SVProgressHUDMaskType) {
     SVProgressHUDMaskTypeClear,     // don't allow user interactions
     SVProgressHUDMaskTypeBlack,     // don't allow user interactions and dim the UI in the back of the HUD
     SVProgressHUDMaskTypeGradient,  // don't allow user interactions and dim the UI with a a-la-alert-view background gradient
-    SVProgressHUDMaskTypeYellow
+    SVProgressHUDMaskTypeYellow,
+    SVProgressHUDMaskTypeRed,
+    SVProgressHUDMaskTypeBlurred
 };
 
 @interface SVProgressHUD : UIView
