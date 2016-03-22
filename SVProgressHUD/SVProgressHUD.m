@@ -261,6 +261,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
         self.userInteractionEnabled = NO;
         self.backgroundColor = [UIColor clearColor];
         self.alpha = 0.0f;
+        self.overlayView.alpha = 0.0f;
         self.activityCount = 0;
         
         SVProgressHUDBackgroundColor = [UIColor whiteColor];
@@ -711,6 +712,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
         if(self.isClear) {
             self.alpha = 1;
             self.hudView.alpha = 0;
+            self.overlayView.alpha = 0;
         }
         
         [UIView animateWithDuration:0.15
@@ -723,6 +725,7 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
                                  self.hudView.alpha = 1;
                              else
                                  self.alpha = 1;
+                             self.overlayView.alpha = 1;
                          }
                          completion:^(BOOL finished){
                              [[NSNotificationCenter defaultCenter] postNotificationName:SVProgressHUDDidAppearNotification
@@ -803,11 +806,13 @@ static const CGFloat SVProgressHUDUndefinedProgress = -1;
                              self.hudView.alpha = 0.0f;
                          else
                              self.alpha = 0.0f;
+                         self.overlayView.alpha = 0.0f;
                      }
                      completion:^(BOOL finished){
                          if(self.alpha == 0.0f || self.hudView.alpha == 0.0f) {
                              self.alpha = 0.0f;
                              self.hudView.alpha = 0.0f;
+                             self.overlayView.alpha = 0.0f;
                              
                              [[NSNotificationCenter defaultCenter] removeObserver:self];
                              [self cancelRingLayerAnimation];
